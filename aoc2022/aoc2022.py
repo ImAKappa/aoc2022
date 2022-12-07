@@ -4,11 +4,8 @@
 Helper/convenience methods for Advent of Code 2022
 """
 
-import urllib.request
-import urllib.error
 from pathlib import Path
 import io
-from pprint import pprint
 
 class Day:
     """Class that manages input for the problem of the day"""
@@ -36,7 +33,7 @@ class Day:
 
     def test(self, solution: callable, answer: int, should_crash: bool = True) -> None:
         """Tries solution on test input"""
-        msg = "Running Test"
+        msg = f"Testing {solution.__name__}"
         print(f"{msg}\n{'-'*len(msg)}")
         guess = solution(self.test_input)
         result = f"Guess: {guess}\nAnswer: {answer}"
@@ -53,6 +50,9 @@ class Day:
 
     def solve(self, solution: callable) -> None:
         """Tries solution on full input"""
+        msg = f"Solving {solution.__name__}"
+        print(f"{msg}\n{'-'*len(msg)}")
         guess = solution(self.full_input)
-        print(f"{self} Answer: {guess}")
+        result = f"{self} Answer: {guess}"
+        print(result, "\n")
         return
